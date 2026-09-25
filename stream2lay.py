@@ -1,5 +1,5 @@
 """
-Streamlit-приложение: двухслойная кривая ВЭЗ. Для курса электроразведки ГГФ НГУ, 2026
+Streamlit-приложение: двухслойная кривая ВЭЗ.  Для курса электроразведки ГГФ НГУ, 2026
 Идеальный зонд Шлюмберже (MN→0). Для ΔU — фиктивные I, MN.
 """
 import numpy as np
@@ -123,6 +123,10 @@ fig, ax = plt.subplots(figsize=(11, 6.5), dpi=110)
 
 if mode.startswith("Кажущееся"):
     y, ylabel = rhoa, r"$\rho_k$, Ом·м"
+
+    # ±10 % полосы вокруг ρ1 и ρ2
+    ax.axhspan(rho1 * 0.9, rho1 * 1.1, color="C2", alpha=0.09, zorder=0)
+    ax.axhspan(rho2 * 0.9, rho2 * 1.1, color="C3", alpha=0.09, zorder=0)
 
     # ±5 % полосы вокруг ρ1 и ρ2
     ax.axhspan(rho1 * 0.95, rho1 * 1.05, color="C2", alpha=0.18, zorder=0)
